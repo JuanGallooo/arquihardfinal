@@ -10,7 +10,7 @@ namespace ProyectoFinalArquiHard
     {
         static void Main(string[] args)
         {
-            //Hello world 
+            //Hello world this is facial recognition
         }
     }
 }
