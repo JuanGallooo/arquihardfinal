@@ -67,6 +67,8 @@ namespace ProyectoFinalArquiHard.model
                     }
                     //Asignar tono gris a cada byte del pixel
                     targetBytes[i + 2] = targetBytes[i + 1] = targetBytes[i] = y;
+
+                    //Falta ponerlos en una matrix 
                 }
             }
 
