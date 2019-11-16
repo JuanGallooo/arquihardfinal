@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProyectoFinalArquiHard.model;
 
 namespace ProyectoFinalArquiHard
 {
@@ -11,6 +12,9 @@ namespace ProyectoFinalArquiHard
         static void Main(string[] args)
         {
             //Hello world this is facial recognition
+
+            FaceRecognition main = new FaceRecognition();
+
         }
     }
 }
