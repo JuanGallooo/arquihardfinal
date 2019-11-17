@@ -24,8 +24,20 @@ namespace ProyectoFinalArquiHard.model
         {
             try
             {
+
                 Bitmap imagen = new Bitmap("..\\..\\data\\imgs\\girl.jpeg");
+                //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
                 Bitmap grayImage = createGrayScaleBitmap(imagen);
+                // ARREGLO DE BYTES , MATRIX A UTILIZAR
+                byte[,] imageBytes = createMatrix(grayImage);
+
+                for (int i = 0; i < imageBytes.GetLength(0); i++)
+                {
+                    for (int j = 0; j < imageBytes.GetLength(1); j++)
+                    {
+                        Console.WriteLine("matrix[{0},{1}] = {2}", i, j, imageBytes[i, j]);
+                    }
+                }
             }
             catch (Exception e) 
             {
@@ -50,7 +62,6 @@ namespace ProyectoFinalArquiHard.model
 
             byte[] sourceBytes = getImageBytes(source, ImageLockMode.ReadOnly, out sourceData);
             byte[] targetBytes = getImageBytes(target, ImageLockMode.ReadWrite, out targetData);
-            int contador = 0;
             //recorrer los pixeles
             for (int i = 0; i < sourceBytes.Length; i += 3)
             {
@@ -61,10 +72,6 @@ namespace ProyectoFinalArquiHard.model
                     byte y = (byte)(sourceBytes[i + 2] * 0.3f
                                  + sourceBytes[i + 1] * 0.59f
                                  + sourceBytes[i] * 0.11f);
-                    if (contador < 100) {
-                        Console.WriteLine(y);
-                        contador++;
-                    }
                     //Asignar tono gris a cada byte del pixel
                     targetBytes[i + 2] = targetBytes[i + 1] = targetBytes[i] = y;
 
@@ -78,6 +85,35 @@ namespace ProyectoFinalArquiHard.model
             target.UnlockBits(targetData);
 
             return target;
+        }
+        private byte[,] createMatrix(Bitmap source)
+        {
+            Bitmap target = new Bitmap(source.Width, source.Height, source.PixelFormat);
+            BitmapData sourceData;
+
+            byte[,] ret = new byte[source.Width,source.Height];
+
+            byte[] sourceBytes = getImageBytes(source, ImageLockMode.ReadOnly, out sourceData);
+            int m = 0;
+            int n = 0;
+            for (int i = 0; i < sourceBytes.Length; i += 3)
+            {
+                if ((i + 3) % (source.Width * 3) > 0)
+                {
+                    byte y = (byte)(sourceBytes[i + 2] * 0.3f
+                                 + sourceBytes[i + 1] * 0.59f
+                                 + sourceBytes[i] * 0.11f);
+                    ret[m,n] = y;
+                    n += 1;
+                    if (n==ret.GetLength(1)-1)
+                    {
+                        n = 0;
+                        m += 1;
+                    }
+                }
+            }
+
+            return ret;
         }
     }
 }
