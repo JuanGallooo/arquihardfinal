@@ -75,7 +75,6 @@ namespace ProyectoFinalArquiHard.model
                     //Asignar tono gris a cada byte del pixel
                     targetBytes[i + 2] = targetBytes[i + 1] = targetBytes[i] = y;
 
-                    //Falta ponerlos en una matrix 
                 }
             }
 
@@ -94,8 +93,8 @@ namespace ProyectoFinalArquiHard.model
             byte[,] ret = new byte[source.Width,source.Height];
 
             byte[] sourceBytes = getImageBytes(source, ImageLockMode.ReadOnly, out sourceData);
-            int m = 0;
             int n = 0;
+            int m = 0;
             for (int i = 0; i < sourceBytes.Length; i += 3)
             {
                 if ((i + 3) % (source.Width * 3) > 0)
@@ -103,12 +102,12 @@ namespace ProyectoFinalArquiHard.model
                     byte y = (byte)(sourceBytes[i + 2] * 0.3f
                                  + sourceBytes[i + 1] * 0.59f
                                  + sourceBytes[i] * 0.11f);
-                    ret[m,n] = y;
-                    n += 1;
+                    ret[n,m] = y;
+                    m += 1;
                     if (n==ret.GetLength(1)-1)
                     {
-                        n = 0;
-                        m += 1;
+                        m =0;
+                        n += 1;
                     }
                 }
             }
