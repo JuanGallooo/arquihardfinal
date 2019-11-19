@@ -101,7 +101,7 @@ namespace ProyectoFinalArquiHard.model
                 {
                     byte y = (byte)(sourceBytes[i + 2] * 0.3f
                                  + sourceBytes[i + 1] * 0.59f
-                                 //+ sourceBytes[i] * 0.11f);
+                                 + sourceBytes[i] * 0.11f);
                     ret[n,m] = y;
                     m += 1;
                     if (m==ret.GetLength(1)-1)
