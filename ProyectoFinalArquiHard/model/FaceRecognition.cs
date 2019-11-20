@@ -19,7 +19,6 @@ namespace ProyectoFinalArquiHard.model
             loadData();
             Console.WriteLine("Terminado");
         }
-
         public void loadData()
         {
             try

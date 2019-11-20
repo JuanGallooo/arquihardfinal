@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\LBP.cs" />
     <Compile Include="model\FaceRecognition.cs" />
     <Compile Include="gui\Principal.cs">
       <SubType>Form</SubType>
