@@ -13,7 +13,7 @@ namespace ProyectoFinalArquiHard
         {
             //Hello world this is facial recognition
 
-            FaceRecognition main = new FaceRecognition();
+            FaceRecognition face = new FaceRecognition();
 
         }
     }
