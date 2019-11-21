@@ -14,7 +14,10 @@ namespace ProyectoFinalArquiHard
         {
             //Hello world this is facial recognition
 
-            Application.Run(new Principal());
+            //Application.Run(new Principal());
+
+            FaceRecognition main = new FaceRecognition();
+            main.loadData();
 
         }
     }

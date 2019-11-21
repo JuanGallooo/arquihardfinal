@@ -26,24 +26,24 @@ namespace ProyectoFinalArquiHard.model
             Console.WriteLine("Obteniendo valores...");
             try
             {
-                imagen = new Bitmap("..\\..\\data\\imgs\\girl.jpeg");
-                //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
-                grayImage = createGrayScaleBitmap(imagen);
-                // ARREGLO DE BYTES , MATRIX A UTILIZAR
-                byte[,] imageBytes = createMatrix(imagen);
-
                 for (int i = 1; i < 7; i++)
                 {
+                    imagen = new Bitmap("..\\..\\data\\imgs\\"+i+".jpeg");
+                    //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
+                    grayImage = createGrayScaleBitmap(imagen);
+                    // ARREGLO DE BYTES , MATRIX A UTILIZAR
+                    byte[,] imageBytes = createMatrix(imagen);
+
                     for (int j = 0; j < 6; j++)
                     {
                         StreamWriter sw = new StreamWriter("..\\..\\data\\Imagen" + i + "_Metodo" + j + ".txt");
-                        var watch = new System.Diagnostics.Stopwatch();
                         int repetitions = 500;
                         if (j == 0)
                         {
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation8_1_GLocality(imageBytes);
                                 watch.Stop();
@@ -55,6 +55,7 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation8_1_BLocality(imageBytes);
                                 watch.Stop();
@@ -66,6 +67,7 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation8_2GLocality(imageBytes);
                                 watch.Stop();
@@ -77,6 +79,7 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation8_2BLocality(imageBytes);
                                 watch.Start();
@@ -88,6 +91,7 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation16_2GLocality(imageBytes);
                                 watch.Stop();
@@ -99,12 +103,15 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
+                                var watch = new System.Diagnostics.Stopwatch();
                                 watch.Start();
                                 lbp.LBPTransformation16_2BLocality(imageBytes);
                                 watch.Stop();
                                 sw.WriteLine(watch.ElapsedMilliseconds);
                             }
                         }
+                        sw.Flush();
+                        sw.Close();
                         //sw.Write(result[n, m] + " ");
                         //sw.Write("\n");
                     }
