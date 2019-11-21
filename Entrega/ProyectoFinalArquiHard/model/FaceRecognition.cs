@@ -31,23 +31,90 @@ namespace ProyectoFinalArquiHard.model
                 grayImage = createGrayScaleBitmap(imagen);
                 // ARREGLO DE BYTES , MATRIX A UTILIZAR
                 byte[,] imageBytes = createMatrix(imagen);
-                StreamWriter sw = new StreamWriter("..\\..\\data\\imagen.txt");
-                for (int i = 0; i < imageBytes.GetLength(0); i++)
-                {
-                    for (int j = 0; j < imageBytes.GetLength(1); j++)
-                    {
-                        sw.Write(imageBytes[i, j] + " ");
 
-                        if ((j + 1) == imageBytes.GetLength(1))
+                for (int i = 1; i < 7; i++)
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        StreamWriter sw = new StreamWriter("..\\..\\data\\Imagen" + i + "_Metodo" + j + ".txt");
+                        var watch = new System.Diagnostics.Stopwatch();
+                        int repetitions = 500;
+                        if (j == 0)
                         {
-                            sw.Write("\n");
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation8_1_GLocality(imageBytes);
+                                watch.Stop();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
                         }
+                        else if (j == 1)
+                        {
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation8_1_BLocality(imageBytes);
+                                watch.Stop();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
+                        }
+                        else if (j == 2)
+                        {
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation8_2GLocality(imageBytes);
+                                watch.Stop();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
+                        }
+                        else if (j == 3)
+                        {
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation8_2BLocality(imageBytes);
+                                watch.Start();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
+                        }
+                        else if (j == 4)
+                        {
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation16_2GLocality(imageBytes);
+                                watch.Stop();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
+                        }
+                        else
+                        {
+                            LBP lbp = new LBP();
+                            for (int k = 0; k < repetitions; k++)
+                            {
+                                watch.Start();
+                                lbp.LBPTransformation16_2BLocality(imageBytes);
+                                watch.Stop();
+                                sw.WriteLine(watch.ElapsedMilliseconds);
+                            }
+                        }
+                        //sw.Write(result[n, m] + " ");
+                        //sw.Write("\n");
                     }
+
                 }
+
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
-                Console.WriteLine("Error "+ e.Message);
+                Console.WriteLine("Error " + e.Message);
                 Console.WriteLine(e.StackTrace);
             }
             Console.WriteLine("Terminado");
@@ -91,12 +158,12 @@ namespace ProyectoFinalArquiHard.model
         private byte[,] createMatrix(Bitmap source)
         {
             BitmapData sourceData;
-            byte[,] ret = new byte[source.Width,source.Height];
+            byte[,] ret = new byte[source.Width, source.Height];
             byte[] sourceBytes = getImageBytes(source, ImageLockMode.ReadOnly, out sourceData);
             int n = 0;
             int m = 0;
             Console.WriteLine(ret.GetLength(1));
-            Console.WriteLine(sourceBytes.Length/3);
+            Console.WriteLine(sourceBytes.Length / 3);
             for (int i = 0; i < sourceBytes.Length; i += 3)
             {
                 if ((i + 3) % (source.Width * 3) > 0)
@@ -104,13 +171,13 @@ namespace ProyectoFinalArquiHard.model
                     byte y = (byte)(sourceBytes[i + 2] * 0.3f
                                  + sourceBytes[i + 1] * 0.59f
                                  + sourceBytes[i] * 0.11f);
-                        ret[n, m] = y;
-                        m += 1;
-                        if (m == ret.GetLength(1) - 1)
-                        {
-                            m = 0;
-                            n += 1;
-                        }
+                    ret[n, m] = y;
+                    m += 1;
+                    if (m == ret.GetLength(1) - 1)
+                    {
+                        m = 0;
+                        n += 1;
+                    }
                 }
             }
             source.UnlockBits(sourceData);

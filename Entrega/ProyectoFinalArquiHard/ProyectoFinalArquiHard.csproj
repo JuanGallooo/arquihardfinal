@@ -65,7 +65,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\imgs\boy.jpeg" />
+    <Content Include="data\imgs\1.jpeg" />
+    <Content Include="data\imgs\2.jpeg" />
+    <Content Include="data\imgs\3.jpeg" />
+    <Content Include="data\imgs\4.jpeg" />
+    <Content Include="data\imgs\5.jpeg" />
+    <Content Include="data\imgs\6.jpeg" />
     <Content Include="data\imgs\girl.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
