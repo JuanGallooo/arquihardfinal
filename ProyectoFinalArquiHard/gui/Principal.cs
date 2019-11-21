@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinalArquiHard.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,12 +16,14 @@ namespace ProyectoFinalArquiHard
         public Principal()
         {
             InitializeComponent();
-            FaceRecognition main = new FaceRecognition();
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            FaceRecognition main = new FaceRecognition();
+            main.loadData();
+            this.pictureLocal.Image = main.Imagen;
+            this.pictureGrises.Image = main.GrayImage;
         }
     }
 }
