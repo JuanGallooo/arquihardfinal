@@ -26,17 +26,20 @@ namespace ProyectoFinalArquiHard.model
             Console.WriteLine("Obteniendo valores...");
             try
             {
-                for (int i = 1; i < 7; i++)
+                for (int i = 1; i < 2; i++)
                 {
-                    imagen = new Bitmap("..\\..\\data\\imgs\\"+i+".jpeg");
+                    Console.WriteLine("Imagen: " + i);
+                    imagen = new Bitmap("..\\..\\data\\imgs\\" + i + ".jpeg");
                     //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
                     grayImage = createGrayScaleBitmap(imagen);
                     // ARREGLO DE BYTES , MATRIX A UTILIZAR
                     byte[,] imageBytes = createMatrix(imagen);
 
-                    for (int j = 0; j < 6; j++)
+                    for (int j = 0; j < 1; j++)
                     {
+                        Console.WriteLine("Metodo: " + j);
                         StreamWriter sw = new StreamWriter("..\\..\\data\\Imagen" + i + "_Metodo" + j + ".txt");
+                        sw.Write("HOLAAA");
                         int repetitions = 500;
                         if (j == 0)
                         {
@@ -110,8 +113,7 @@ namespace ProyectoFinalArquiHard.model
                                 sw.WriteLine(watch.ElapsedMilliseconds);
                             }
                         }
-                        sw.Flush();
-                        sw.Close();
+                        //sw.Close();
                         //sw.Write(result[n, m] + " ");
                         //sw.Write("\n");
                     }
@@ -169,23 +171,31 @@ namespace ProyectoFinalArquiHard.model
             byte[] sourceBytes = getImageBytes(source, ImageLockMode.ReadOnly, out sourceData);
             int n = 0;
             int m = 0;
-            Console.WriteLine(ret.GetLength(1));
-            Console.WriteLine(sourceBytes.Length / 3);
-            for (int i = 0; i < sourceBytes.Length; i += 3)
+            try
             {
-                if ((i + 3) % (source.Width * 3) > 0)
+                for (int i = 0; i < sourceBytes.Length; i += 3)
                 {
-                    byte y = (byte)(sourceBytes[i + 2] * 0.3f
-                                 + sourceBytes[i + 1] * 0.59f
-                                 + sourceBytes[i] * 0.11f);
-                    ret[n, m] = y;
-                    m += 1;
-                    if (m == ret.GetLength(1) - 1)
+                    if ((i + 3) % (source.Width * 3) > 0)
                     {
-                        m = 0;
-                        n += 1;
+                        byte y = (byte)(sourceBytes[i + 2] * 0.3f
+                                     + sourceBytes[i + 1] * 0.59f
+                                     + sourceBytes[i] * 0.11f);
+                        if (n < ret.GetLength(0))
+                        {
+                            ret[n, m] = y;
+                            m += 1;
+                            if (m == ret.GetLength(1) - 1)
+                            {
+                                m = 0;
+                                n += 1;
+                            }
+                        }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
             }
             source.UnlockBits(sourceData);
             return ret;
