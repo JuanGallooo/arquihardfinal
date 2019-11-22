@@ -26,7 +26,7 @@ namespace ProyectoFinalArquiHard.model
             Console.WriteLine("Obteniendo valores...");
             try
             {
-                for (int i = 1; i < 2; i++)
+                for (int i = 1; i < 7; i++)
                 {
                     Console.WriteLine("Imagen: " + i);
                     imagen = new Bitmap("..\\..\\data\\imgs\\" + i + ".jpeg");
@@ -35,11 +35,11 @@ namespace ProyectoFinalArquiHard.model
                     // ARREGLO DE BYTES , MATRIX A UTILIZAR
                     byte[,] imageBytes = createMatrix(imagen);
 
-                    for (int j = 0; j < 1; j++)
+                    for (int j = 0; j < 6; j++)
                     {
+
                         Console.WriteLine("Metodo: " + j);
-                        StreamWriter sw = new StreamWriter("..\\..\\data\\Imagen" + i + "_Metodo" + j + ".txt");
-                        sw.Write("HOLAAA");
+                        StreamWriter sw= new StreamWriter("C:\\Users\\Juan Esteban Gallo\\Desktop\\ArquiHard Final\\datos\\Imagen" + i + "_Metodo" + j + ".txt");
                         int repetitions = 500;
                         if (j == 0)
                         {
@@ -113,9 +113,7 @@ namespace ProyectoFinalArquiHard.model
                                 sw.WriteLine(watch.ElapsedMilliseconds);
                             }
                         }
-                        //sw.Close();
-                        //sw.Write(result[n, m] + " ");
-                        //sw.Write("\n");
+                        sw.Close();  //or tw.Flush();
                     }
 
                 }
