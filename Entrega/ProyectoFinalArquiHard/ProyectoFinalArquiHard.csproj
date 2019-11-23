@@ -66,12 +66,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\imgs\1.jpeg" />
+    <Content Include="data\imgs\10.jpeg" />
+    <Content Include="data\imgs\11.jpeg" />
+    <Content Include="data\imgs\12.jpeg" />
+    <Content Include="data\imgs\13.jpeg" />
+    <Content Include="data\imgs\14.jpeg" />
+    <Content Include="data\imgs\15.jpeg" />
+    <Content Include="data\imgs\16.jpeg" />
+    <Content Include="data\imgs\17.jpeg" />
+    <Content Include="data\imgs\18.jpeg" />
+    <Content Include="data\imgs\19.jpeg" />
     <Content Include="data\imgs\2.jpeg" />
+    <Content Include="data\imgs\20.jpeg" />
     <Content Include="data\imgs\3.jpeg" />
     <Content Include="data\imgs\4.jpeg" />
     <Content Include="data\imgs\5.jpeg" />
     <Content Include="data\imgs\6.jpeg" />
-    <Content Include="data\imgs\girl.jpeg" />
+    <Content Include="data\imgs\7.jpeg" />
+    <Content Include="data\imgs\8.jpeg" />
+    <Content Include="data\imgs\9.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ProyectoFinalArquiHard.model
 {
@@ -26,7 +27,11 @@ namespace ProyectoFinalArquiHard.model
             Console.WriteLine("Obteniendo valores...");
             try
             {
-                for (int i = 1; i < 7; i++)
+                for (int z = 0; z < 6; z++)
+                {
+                    StreamWriter sw = new StreamWriter("C:\\Users\\danie\\Desktop\\DatosSinNormalizar\\Replica " + z + ".txt");
+
+                    for (int i = 1; i < 21; i++)
                 {
                     Console.WriteLine("Imagen: " + i);
                     imagen = new Bitmap("..\\..\\data\\imgs\\" + i + ".jpeg");
@@ -34,23 +39,25 @@ namespace ProyectoFinalArquiHard.model
                     grayImage = createGrayScaleBitmap(imagen);
                     // ARREGLO DE BYTES , MATRIX A UTILIZAR
                     byte[,] imageBytes = createMatrix(imagen);
-
-                    for (int j = 0; j < 6; j++)
+                       
+                        for (int j = 0; j < 6; j++)
                     {
 
                         Console.WriteLine("Metodo: " + j);
-                        StreamWriter sw= new StreamWriter("C:\\Users\\Juan Esteban Gallo\\Desktop\\ArquiHard Final\\datos\\Imagen" + i + "_Metodo" + j + ".txt");
-                        int repetitions = 500;
+                       
+                        int repetitions = 10;
                         if (j == 0)
                         {
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
+
                                 lbp.LBPTransformation8_1_GLocality(imageBytes);
-                                watch.Stop();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
                         else if (j == 1)
@@ -58,11 +65,12 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
                                 lbp.LBPTransformation8_1_BLocality(imageBytes);
-                                watch.Stop();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
                         else if (j == 2)
@@ -70,11 +78,12 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
                                 lbp.LBPTransformation8_2GLocality(imageBytes);
-                                watch.Stop();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
                         else if (j == 3)
@@ -82,11 +91,12 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
                                 lbp.LBPTransformation8_2BLocality(imageBytes);
-                                watch.Start();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
                         else if (j == 4)
@@ -94,11 +104,12 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
                                 lbp.LBPTransformation16_2GLocality(imageBytes);
-                                watch.Stop();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
                         else
@@ -106,18 +117,23 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                var watch = new System.Diagnostics.Stopwatch();
-                                watch.Start();
+                                Stopwatch wacth = new Stopwatch();
+                                wacth.Restart();
+                                wacth.Start();
                                 lbp.LBPTransformation16_2BLocality(imageBytes);
-                                watch.Stop();
-                                sw.WriteLine(watch.ElapsedMilliseconds);
+                                wacth.Stop();
+                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
                             }
                         }
-                        sw.Close();  //or tw.Flush();
+                        //or tw.Flush();
+                            
+                        }
+
                     }
-
+                    sw.Close();
+                    Console.WriteLine("\n");
                 }
-
+                
             }
             catch (Exception e)
             {
