@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace ProyectoFinalArquiHard.model
 {
     class LBP
     {
-        public byte[,] LBPTransformation8_1_GLocality(byte[,] grayScale)
+        public long LBPTransformation8_1_GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte[,] nMatrix = new byte[width, height];
             byte temp = 0;
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int i = 1; i < width - 1; i++)
             {
                 for (int j = 1; j < height - 1; j++)
@@ -47,16 +51,20 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+           
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
-        public byte[,] LBPTransformation8_2GLocality(byte[,] grayScale)
+        public long LBPTransformation8_2GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte temp = 0;
             byte[,] nMatrix = new byte[width, height];
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int i = 2; i < width - 2; i++)
             {
                 for (int j = 2; j < height - 2; j++)
@@ -92,17 +100,20 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
-        public int[,] LBPTransformation16_2GLocality(byte[,] grayScale)
+        public long LBPTransformation16_2GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte temp = 0;
 
             int[,] nMatrix = new int[width, height];
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int i = 2; i < width - 2; i++)
             {
                 for (int j = 2; j < height - 2; j++)
@@ -160,16 +171,19 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
-        public byte[,] LBPTransformation8_1_BLocality(byte[,] grayScale)
+        public long LBPTransformation8_1_BLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte temp = 0;
             byte[,] nMatrix = new byte[width, height];
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int j = 1; j < height - 1; j++)
             {
                 for (int i = 1; i < width - 1; i++)
@@ -203,16 +217,19 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
-        public byte[,] LBPTransformation8_2BLocality(byte[,] grayScale)
+        public long LBPTransformation8_2BLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte temp = 0;
             byte[,] nMatrix = new byte[width, height];
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int j = 2; j < height - 2; j++)
             {
                 for (int i = 2; i < width - 2; i++)
@@ -247,17 +264,21 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+            
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
-        public int[,] LBPTransformation16_2BLocality(byte[,] grayScale)
+        public long LBPTransformation16_2BLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
             byte temp = 0;
 
             int[,] nMatrix = new int[width, height];
+            Stopwatch wacth = new Stopwatch();
+            wacth.Restart();
+            wacth.Start();
             for (int j = 2; j < height - 2; j++)
             {
                 for (int i = 2; i < width - 2; i++)
@@ -315,8 +336,9 @@ namespace ProyectoFinalArquiHard.model
                     nMatrix[i, j] = result;
                 }
             }
-
-            return nMatrix;
+            wacth.Stop();
+            
+            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
 
         }
 

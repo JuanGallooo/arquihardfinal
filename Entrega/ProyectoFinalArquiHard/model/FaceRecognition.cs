@@ -27,14 +27,12 @@ namespace ProyectoFinalArquiHard.model
             Console.WriteLine("Obteniendo valores...");
             try
             {
-                for (int z = 0; z < 6; z++)
-                {
-                    StreamWriter sw = new StreamWriter("C:\\Users\\danie\\Desktop\\DatosSinNormalizar\\Replica " + z + ".txt");
+             
+                    StreamWriter sw = new StreamWriter("C:\\Users\\danie\\Desktop\\DatosSinNormalizar\\Replica5_Imagen10.txt");
 
-                    for (int i = 1; i < 21; i++)
-                {
-                    Console.WriteLine("Imagen: " + i);
-                    imagen = new Bitmap("..\\..\\data\\imgs\\" + i + ".jpeg");
+                 
+                    //Console.WriteLine("Imagen: " + 1);
+                    imagen = new Bitmap("..\\..\\data\\imgs\\" + 10 + ".jpeg");
                     //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
                     grayImage = createGrayScaleBitmap(imagen);
                     // ARREGLO DE BYTES , MATRIX A UTILIZAR
@@ -51,13 +49,7 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-
-                                lbp.LBPTransformation8_1_GLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+                                sw.WriteLine(lbp.LBPTransformation8_1_GLocality(imageBytes));
                             }
                         }
                         else if (j == 1)
@@ -65,12 +57,9 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-                                lbp.LBPTransformation8_1_BLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+
+                            sw.WriteLine(lbp.LBPTransformation8_1_BLocality(imageBytes));
+                               
                             }
                         }
                         else if (j == 2)
@@ -78,12 +67,9 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-                                lbp.LBPTransformation8_2GLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+
+                            sw.WriteLine(lbp.LBPTransformation8_2GLocality(imageBytes));
+                               
                             }
                         }
                         else if (j == 3)
@@ -91,12 +77,9 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-                                lbp.LBPTransformation8_2BLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+
+                            sw.WriteLine(lbp.LBPTransformation8_2BLocality(imageBytes));
+                              
                             }
                         }
                         else if (j == 4)
@@ -104,12 +87,9 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-                                lbp.LBPTransformation16_2GLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+
+                            sw.WriteLine(lbp.LBPTransformation16_2GLocality(imageBytes));
+                              
                             }
                         }
                         else
@@ -117,22 +97,19 @@ namespace ProyectoFinalArquiHard.model
                             LBP lbp = new LBP();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                Stopwatch wacth = new Stopwatch();
-                                wacth.Restart();
-                                wacth.Start();
-                                lbp.LBPTransformation16_2BLocality(imageBytes);
-                                wacth.Stop();
-                                sw.WriteLine((long)(wacth.Elapsed.TotalMilliseconds * 1000000));
+
+                            sw.WriteLine(lbp.LBPTransformation16_2BLocality(imageBytes));
+                               
                             }
                         }
                         //or tw.Flush();
                             
                         }
 
-                    }
+                    
                     sw.Close();
                     Console.WriteLine("\n");
-                }
+                
                 
             }
             catch (Exception e)
