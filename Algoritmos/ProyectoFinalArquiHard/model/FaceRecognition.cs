@@ -19,8 +19,12 @@ namespace ProyectoFinalArquiHard.model
         }
         private Bitmap imagen;
         private Bitmap grayImage;
+        private Bitmap imagen2;
+        private Bitmap grayImage2;
         public Bitmap Imagen { get => imagen; set => imagen = value; }
         public Bitmap GrayImage { get => grayImage; set => grayImage = value; }
+        public Bitmap Imagen2 { get => imagen2; set => imagen2 = value; }
+        public Bitmap GrayImage2 { get => grayImage2; set => grayImage2 = value; }
         private readonly ImageConverter _imageConverter = new ImageConverter();
         public void loadData()
         {
@@ -28,28 +32,32 @@ namespace ProyectoFinalArquiHard.model
             try
             {
              
-                    StreamWriter sw = new StreamWriter("C:\\Users\\danie\\Desktop\\DatosSinNormalizar\\Replica5_Imagen10.txt");
+                    StreamWriter sw = new StreamWriter("C:\\Users\\danie\\Desktop\\Imagens1a.txt");
 
                  
                     //Console.WriteLine("Imagen: " + 1);
-                    imagen = new Bitmap("..\\..\\data\\imgs\\" + 10 + ".jpeg");
-                    //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
-                    grayImage = createGrayScaleBitmap(imagen);
-                    // ARREGLO DE BYTES , MATRIX A UTILIZAR
-                    byte[,] imageBytes = createMatrix(imagen);
-                       
-                        for (int j = 0; j < 6; j++)
+                    imagen = new Bitmap("..\\..\\data\\imgs\\s1A.jpeg");
+                imagen2 = new Bitmap("..\\..\\data\\imgs\\s1B.jpeg");
+                //OBTENER BITMAP PARA MOSTRAR EN WINDOWS FORM,ESCALA DE GRISES
+                grayImage = createGrayScaleBitmap(imagen);
+                grayImage2 = createGrayScaleBitmap(imagen2);
+                // ARREGLO DE BYTES , MATRIX A UTILIZAR
+                byte[,] imageBytes = createMatrix(imagen);
+                byte[,] imageBytes2 = createMatrix(imagen2);
+
+                for (int j = 0; j < 1; j++)
                     {
 
                         Console.WriteLine("Metodo: " + j);
                        
-                        int repetitions = 10;
+                        int repetitions = 1;
                         if (j == 0)
                         {
                             LBP lbp = new LBP();
+                                 DistanciaChi dc= new DistanciaChi();
                             for (int k = 0; k < repetitions; k++)
                             {
-                                sw.WriteLine(lbp.LBPTransformation8_1_GLocality(imageBytes));
+                                sw.WriteLine(dc.DistanciaChiCuadrado(lbp.LBPTransformation8_1_GLocality(imageBytes ), lbp.LBPTransformation8_1_GLocality(imageBytes2)));
                             }
                         }
                         else if (j == 1)
@@ -58,9 +66,9 @@ namespace ProyectoFinalArquiHard.model
                             for (int k = 0; k < repetitions; k++)
                             {
 
-                            sw.WriteLine(lbp.LBPTransformation8_1_BLocality(imageBytes));
-                               
-                            }
+                            sw.WriteLine(lbp.LBPTransformation8_2GLocality(imageBytes));
+
+                        }
                         }
                         else if (j == 2)
                         {
@@ -68,40 +76,12 @@ namespace ProyectoFinalArquiHard.model
                             for (int k = 0; k < repetitions; k++)
                             {
 
-                            sw.WriteLine(lbp.LBPTransformation8_2GLocality(imageBytes));
-                               
-                            }
-                        }
-                        else if (j == 3)
-                        {
-                            LBP lbp = new LBP();
-                            for (int k = 0; k < repetitions; k++)
-                            {
-
-                            sw.WriteLine(lbp.LBPTransformation8_2BLocality(imageBytes));
-                              
-                            }
-                        }
-                        else if (j == 4)
-                        {
-                            LBP lbp = new LBP();
-                            for (int k = 0; k < repetitions; k++)
-                            {
-
                             sw.WriteLine(lbp.LBPTransformation16_2GLocality(imageBytes));
-                              
-                            }
-                        }
-                        else
-                        {
-                            LBP lbp = new LBP();
-                            for (int k = 0; k < repetitions; k++)
-                            {
 
-                            sw.WriteLine(lbp.LBPTransformation16_2BLocality(imageBytes));
-                               
-                            }
                         }
+                        }
+                       
+                        
                         //or tw.Flush();
                             
                         }

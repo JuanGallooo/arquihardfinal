@@ -9,7 +9,7 @@ namespace ProyectoFinalArquiHard.model
 {
     class LBP
     {
-        public long LBPTransformation8_1_GLocality(byte[,] grayScale)
+        public byte[,] LBPTransformation8_1_GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
@@ -53,10 +53,10 @@ namespace ProyectoFinalArquiHard.model
             }
             wacth.Stop();
            
-            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
+            return nMatrix;
 
         }
-        public long LBPTransformation8_2GLocality(byte[,] grayScale)
+        public byte[,] LBPTransformation8_2GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
@@ -101,10 +101,10 @@ namespace ProyectoFinalArquiHard.model
                 }
             }
             wacth.Stop();
-            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
+            return nMatrix;
 
         }
-        public long LBPTransformation16_2GLocality(byte[,] grayScale)
+        public int[,] LBPTransformation16_2GLocality(byte[,] grayScale)
         {
             int width = grayScale.GetLength(0);
             int height = grayScale.GetLength(1);
@@ -172,7 +172,7 @@ namespace ProyectoFinalArquiHard.model
                 }
             }
             wacth.Stop();
-            return (long)(wacth.Elapsed.TotalMilliseconds * 1000000);
+            return nMatrix;
 
         }
         public long LBPTransformation8_1_BLocality(byte[,] grayScale)

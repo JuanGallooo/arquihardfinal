@@ -9,7 +9,7 @@ namespace ProyectoFinalArquiHard.model
     class DistanciaChi
     {
 
-        public void DistanciaChiCuadrado(byte[,] imagen1, byte[,] imagen2)
+        public double DistanciaChiCuadrado(byte[,] imagen1, byte[,] imagen2)
         {
             int width = imagen1.GetLength(0);
             int length = imagen2.GetLength(1);
@@ -27,6 +27,7 @@ namespace ProyectoFinalArquiHard.model
 
                 }
             }
+            return result;
         }
     }
 }
