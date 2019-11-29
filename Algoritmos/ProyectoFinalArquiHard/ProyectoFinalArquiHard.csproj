@@ -68,24 +68,21 @@
   <ItemGroup>
     <Content Include="data\imgs\1.jpeg" />
     <Content Include="data\imgs\10.jpeg" />
-    <Content Include="data\imgs\11.jpeg" />
-    <Content Include="data\imgs\12.jpeg" />
-    <Content Include="data\imgs\13.jpeg" />
-    <Content Include="data\imgs\14.jpeg" />
-    <Content Include="data\imgs\15.jpeg" />
-    <Content Include="data\imgs\16.jpeg" />
-    <Content Include="data\imgs\17.jpeg" />
-    <Content Include="data\imgs\18.jpeg" />
-    <Content Include="data\imgs\19.jpeg" />
     <Content Include="data\imgs\2.jpeg" />
-    <Content Include="data\imgs\20.jpeg" />
     <Content Include="data\imgs\3.jpeg" />
     <Content Include="data\imgs\4.jpeg" />
-    <Content Include="data\imgs\5.jpeg" />
     <Content Include="data\imgs\6.jpeg" />
     <Content Include="data\imgs\7.jpeg" />
     <Content Include="data\imgs\8.jpeg" />
     <Content Include="data\imgs\9.jpeg" />
+    <Content Include="data\imgs\s1A.jpg" />
+    <Content Include="data\imgs\s1B.jpg" />
+    <Content Include="data\imgs\s2A.jpg" />
+    <Content Include="data\imgs\s2B.jpg" />
+    <Content Include="data\imgs\s3A.jpg" />
+    <Content Include="data\imgs\s3B.jpg" />
+    <Content Include="data\imgs\s4A.jpg" />
+    <Content Include="data\imgs\s4B.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
